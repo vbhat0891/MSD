@@ -27,7 +27,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
-DEBUG = False
+DEBUG = True
 
 try:
     from .local_settings import *
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog', 'vivblog',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'def0qdf5gg84tv',
         'USER': 'tzmambjeighmon',
         'PASSWORD': '25f0e33f6c7e0b951d2a5827fc4833611a4e0b62e71e6d7e2db244d1c73b83ce',
-        'HOST': '25f0e33f6c7e0b951d2a5827fc4833611a4e0b62e71e6d7e2db244d1c73b83ce',
+        'HOST': 'ec2-23-21-197-231.compute-1.amazonaws.com',
         'PORT': '5432',
 
     }
