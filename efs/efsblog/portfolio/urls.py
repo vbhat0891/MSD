@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^investment/$', views.investment_list, name='investment_list'),
     url(r'^investment/(?P<pk>\d+)/delete/$', views.investment_delete, name='investment_delete'),
     url(r'^investment/(?P<pk>\d+)/edit/$', views.investment_edit, name='investment_edit'),
+    url(r'^accounts/profile/$', views.home, name='home'),
 
  ]
 
