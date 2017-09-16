@@ -28,7 +28,31 @@
     <h2 style="padding-left: 15Px">Customer Portfolio</h2>
 </div>
 
+<div class="row">
+    <h2 style="padding-left: 15Px">Overall Portfolio Performance Information</h2>
+</div>
+<div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
 
+            <th>Portfolio Initial Investments</th>
+            <th>Portfolio Current Investments</th>
+            <th>Grand Total results</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.customer }}</td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <div class="row">
     <h2 style="padding-left: 15Px">Stocks Information</h2>
@@ -38,7 +62,54 @@
         <thead>
         <tr class="bg-info">
 
-            <th>Cust ID</th>
+            <th>Customer</th>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Initial stock Price</th>
+            <th>Initial stock value</th>
+            <th>Current stock price</th>
+            <th>Current stock value</th>
+            <th>Results</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+        {% for investment in investments %}
+            <tr>
+               <td>{{ stock.customer }}</td>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.shares }}</td>
+                <td>{{ stock.purchase_price }}</td>
+                <td>{{ stock.shares|mul:stock.purchase_price }}</td >
+                <td>{{ investment.recent_value }}</td>
+                <td>{{ investment.recent_value|mul:stock.shares }}</td>
+                <td>{{ investment.recent_value|mul:stock.shares|sub:stock.shares|mul:stock.purchase_price}}</td>
+            </tr>
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <h2 style="padding-left: 15Px">Investment Information</h2>
+</div>
+<div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+
+            <th>Customer</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Acquired Value</th>
+            <th>Acquired Date</th>
+            <th>Recent value</th>
+            <th>Recent Date</th>
+            <th>Results</th>
 
         </tr>
         </thead>
@@ -54,6 +125,29 @@
     </table>
 </div>
 
+<div class="row">
+    <h2 style="padding-left: 15Px">Investment Information</h2>
+</div>
+<div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="bg-info">
+
+            <th>Total of initial Investment</th>
+            <th>Total of current Investment</th>
+            <th>Results</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.customer }}</td>
 
 
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
