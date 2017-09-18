@@ -25,6 +25,14 @@ SECRET_KEY = 'xj3+xn#^ha!ht=qc5p4tzgksu88^g7#5j%jgx9jro66c)hts_!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'vbhat0811@gmail.com  '
+    EMAIL_HOST_PASSWORD = 'zsdnamwvdteodwnq'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'vbhat0811@gmail.com'
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 
@@ -57,7 +65,7 @@ ROOT_URLCONF = 'efsblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['portfolio/templates/registration'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

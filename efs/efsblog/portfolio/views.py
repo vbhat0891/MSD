@@ -5,7 +5,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.db.models import Sum
-
+from yahoo_finance import Share
+from django.db.models import F
 
 
 def home(request):
@@ -143,6 +144,11 @@ def investment_delete(request, pk):
 
 
 
+#def finance()
+ #   print(st.symbol)
+  #  microsoft = Share('MSFT')
+   # return print(microsoft.get_price())
+
 @login_required
 def portfolio(request,pk):
    customer = get_object_or_404(Customer, pk=pk)
@@ -150,8 +156,10 @@ def portfolio(request,pk):
    investments =Investment.objects.filter(customer=pk)
    stocks = Stock.objects.filter(customer=pk)
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
+   sum_purchase_value= Stock.objects.filter(customer=pk).aggregate(total=Sum(F('purchase_price')*F('shares') ) )['total']
 
 
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
-                                                      'sum_acquired_value': sum_acquired_value,})
+                                                      'sum_acquired_value': sum_acquired_value,
+                                                      'sum_purchase_value': sum_purchase_value,})
