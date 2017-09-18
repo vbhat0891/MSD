@@ -46,6 +46,23 @@ def customer_delete(request, pk):
    customer.delete()
    return redirect('portfolio:customer_list')
 
+@login_required
+def customer_new(request):
+   if request.method == "POST":
+       form = CustomerForm(request.POST)
+       if form.is_valid():
+           customer = form.save(commit=False)
+           customer.created_date = timezone.now()
+           customer.save()
+           customers= Customer.objects.filter(created_date=timezone.now())
+           return render(request, 'portfolio/customer_list.html',
+                         {'customers': customers})
+   else:
+       form = CustomerForm()
+       # print("Else")
+   return render(request, 'portfolio/customer_new.html', {'form': form})
+
+
 
 @login_required
 def stock_list(request):
